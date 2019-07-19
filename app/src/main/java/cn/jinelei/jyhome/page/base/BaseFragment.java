@@ -15,7 +15,9 @@ import cn.jinelei.jyhome.exception.ActivityNotAttachedException;
 public abstract class BaseFragment extends Fragment implements IBaseView {
     public abstract int getContentViewId();
 
-    protected abstract void initAllMembersView(Bundle saveInstanceState);
+    public abstract void initView(View view);
+
+    public abstract void initEvent();
 
     protected Context mContext;
     protected View mRootView;
@@ -25,7 +27,6 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mRootView = inflater.inflate(getContentViewId(), container, false);
         this.mContext = getActivity();
-        initAllMembersView(savedInstanceState);
         return mRootView;
     }
 

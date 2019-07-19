@@ -42,6 +42,7 @@ dependencies {
     implementation 'com.facebook.stetho:stetho-okhttp3:1.4.2'
 
     // Testing-only dependencies
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     androidTestImplementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     androidTestImplementation 'androidx.test:core:' + rootProject.coreVersion
     androidTestImplementation 'androidx.test:core-ktx:' + rootProject.coreVersion

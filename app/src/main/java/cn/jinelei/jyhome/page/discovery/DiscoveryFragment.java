@@ -1,33 +1,40 @@
 package cn.jinelei.jyhome.page.discovery;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 import cn.jinelei.jyhome.R;
+import cn.jinelei.jyhome.base.BaseApplication;
 import cn.jinelei.jyhome.base.JySingleton;
 import cn.jinelei.jyhome.page.base.BaseFragment;
+import cn.jinelei.jyhome.page.base.BaseRecyclerViewAdapter;
+import cn.jinelei.jyhome.page.base.BaseViewHolder;
 
 public class DiscoveryFragment extends BaseFragment {
     private static final String TAG = DiscoveryFragment.class.getSimpleName();
+    private RecyclerView recyclerView;
+    private final ArrayList<DiscoveryCardItem> allDiscoveryCardItems = new ArrayList<>();
+    private View.OnClickListener itemClickListener = view -> {
+
+    };
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_test, container, false);
-    }
-
-    @Override
-    public void onInflate(@NonNull Context context, @NonNull AttributeSet attrs, @Nullable Bundle savedInstanceState) {
-        super.onInflate(context, attrs, savedInstanceState);
-        Log.d(TAG, "DiscoveryFragment inflate");
+        View rootView = inflater.inflate(R.layout.fragment_discovery, container, false);
+        initView(rootView);
+        initEvent();
+        return rootView;
     }
 
     @Override
@@ -36,8 +43,38 @@ public class DiscoveryFragment extends BaseFragment {
     }
 
     @Override
-    protected void initAllMembersView(Bundle saveInstanceState) {
+    public void initView(View view) {
+        recyclerView = view.findViewById(R.id.rv_discovery);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+    }
 
+    @Override
+    public void initEvent() {
+        for (int i = 0; i < 10; i++) {
+            allDiscoveryCardItems.add(new DiscoveryCardItem(R.drawable.ic_launcher_background, R.string.app_name, itemClickListener));
+        }
+        BaseRecyclerViewAdapter<DiscoveryCardItem> adapter = new BaseRecyclerViewAdapter<DiscoveryCardItem>(getActivity(), allDiscoveryCardItems, R.layout.item_discovery) {
+            @Override
+            protected void onBindData(BaseViewHolder holder, DiscoveryCardItem item, int position) {
+                LinearLayout llContainer = holder.getChildView(R.id.item_discovery_container);
+                TextView tvTitle = holder.getChildView(R.id.item_discovery_title);
+                llContainer.setOnClickListener(item.listener);
+                tvTitle.setText(getActivity().getString(item.titleRes));
+            }
+        };
+        recyclerView.setAdapter(adapter);
+    }
+
+    public static class DiscoveryCardItem {
+        private int backgroundRes;
+        private int titleRes;
+        private View.OnClickListener listener;
+
+        public DiscoveryCardItem(int backgroundRes, int titleRes, View.OnClickListener listener) {
+            this.backgroundRes = backgroundRes;
+            this.titleRes = titleRes;
+            this.listener = listener;
+        }
     }
 
     public enum Singleton implements JySingleton<DiscoveryFragment> {

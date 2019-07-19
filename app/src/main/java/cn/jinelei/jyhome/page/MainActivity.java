@@ -7,7 +7,6 @@ import androidx.annotation.IdRes;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.jetbrains.annotations.NotNull;
@@ -27,10 +26,13 @@ public class MainActivity extends BaseActivity {
         switch (menuItem.getItemId()) {
             case R.id.navigation_home:
                 switchFragmentTo(R.id.frame_main, HomeFragment.Singleton.INSTANCE.getInstance());
+                break;
             case R.id.navigation_user:
                 switchFragmentTo(R.id.frame_main, UserFragment.Singleton.INSTANCE.getInstance());
+                break;
             case R.id.navigation_discovery:
                 switchFragmentTo(R.id.frame_main, DiscoveryFragment.Singleton.INSTANCE.getInstance());
+                break;
             default:
                 Log.e(TAG, "invalid switch fragment: " + menuItem.getItemId());
         }
@@ -42,7 +44,6 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         initView();
         initEvent();
-        initData();
     }
 
     @Override
@@ -59,10 +60,6 @@ public class MainActivity extends BaseActivity {
     @Override
     public void initEvent() {
         mBottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
-    }
-
-    @Override
-    public void initData() {
         switchFragmentTo(R.id.frame_main, HomeFragment.Singleton.INSTANCE.getInstance());
     }
 

@@ -21,7 +21,6 @@ import cn.jinelei.jyhome.page.base.BaseFragment;
 
 public class HomeFragment extends BaseFragment {
     private static final String TAG = HomeFragment.class.getSimpleName();
-    private View rootView;
     private ViewPager viewPager;
     private final ArrayList<Fragment> allFragments = new ArrayList<>();
 
@@ -45,8 +44,9 @@ public class HomeFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_home, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         initView(rootView);
+        initEvent();
         return rootView;
     }
 

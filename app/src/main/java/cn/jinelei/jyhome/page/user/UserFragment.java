@@ -25,17 +25,17 @@ public class UserFragment extends BaseFragment {
     }
 
     @Override
-    public void onInflate(@NonNull Context context, @NonNull AttributeSet attrs, @Nullable Bundle savedInstanceState) {
-        super.onInflate(context, attrs, savedInstanceState);
-        Log.d(TAG, "UserFragment inflate");
-    }
-    @Override
     public int getContentViewId() {
         return 0;
     }
 
     @Override
-    protected void initAllMembersView(Bundle saveInstanceState) {
+    public void initView(View view) {
+
+    }
+
+    @Override
+    public void initEvent() {
 
     }
 

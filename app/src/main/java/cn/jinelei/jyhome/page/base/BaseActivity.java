@@ -21,8 +21,6 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
     public abstract void initEvent();
 
-    public abstract void initData();
-
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);

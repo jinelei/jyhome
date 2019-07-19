@@ -1,10 +1,6 @@
 package cn.jinelei.jyhome.base;
 
 import android.app.Application;
-import android.util.Log;
-
-import androidx.annotation.IdRes;
-import androidx.fragment.app.Fragment;
 
 import com.facebook.stetho.Stetho;
 
@@ -23,7 +19,7 @@ public class BaseApplication extends Application {
 
     public enum Singleton implements JySingleton<BaseApplication> {
         INSTANCE {
-            public BaseApplication instance = new BaseApplication();
+            BaseApplication instance = new BaseApplication();
 
             @Override
             public BaseApplication getInstance() {

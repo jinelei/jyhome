@@ -1,6 +1,10 @@
 package cn.jinelei.jyhome.base;
 
 import android.app.Application;
+import android.util.Log;
+
+import androidx.annotation.IdRes;
+import androidx.fragment.app.Fragment;
 
 import com.facebook.stetho.Stetho;
 
@@ -8,6 +12,7 @@ import com.facebook.stetho.Stetho;
  * @author jinelei
  */
 public class BaseApplication extends Application {
+    private static final String TAG = BaseApplication.class.getSimpleName();
 
     @Override
     public void onCreate() {

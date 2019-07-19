@@ -13,11 +13,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ContextThemeWrapper;
 
 import cn.jinelei.jyhome.R;
-import cn.jinelei.jyhome.base.JyCrashHandler;
-import cn.jinelei.jyhome.base.JySingleton;
 
 public abstract class BaseActivity extends AppCompatActivity implements IBaseView {
     private AlertDialog alertDialog;
+
+    public abstract void initView();
+
+    public abstract void initEvent();
+
+    public abstract void initData();
 
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {

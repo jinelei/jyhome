@@ -7,7 +7,7 @@ import android.widget.TextView;
 import cn.jinelei.jyhome.R;
 import cn.jinelei.jyhome.page.base.BaseActivity;
 
-public class MainActivity extends BaseActivity implements IMainView {
+public class TestActivity extends BaseActivity implements IMainView {
     private final HomePresenter presenter = new HomePresenter();
     private TextView tvMessage;
     private View.OnClickListener clickListener = view -> {
@@ -30,7 +30,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_test);
         presenter.attachView(this);
         initView();
     }

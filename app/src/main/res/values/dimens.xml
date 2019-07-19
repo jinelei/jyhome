@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="loading_margin_40dp">40dp</dimen>
+    <dimen name="title_height_size">40dp</dimen>
+    <dimen name="title_size">15sp</dimen>
 </resources>

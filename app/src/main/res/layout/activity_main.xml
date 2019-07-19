@@ -5,7 +5,7 @@
     android:id="@+id/layout_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF"
+    android:background="#ffcccccc"
     android:orientation="vertical"
     tools:context=".page.MainActivity">
 
@@ -17,15 +17,16 @@
         android:layout_weight="1" />
 
     <!--导航栏-->
-    <android.support.design.widget.BottomNavigationView
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bnv_main"
+        background="#9E9E9E"
         android:layout_width="match_parent"
         android:layout_height="@dimen/tab_height"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
         android:layout_marginBottom="4dp"
-        app:itemIconTint="@drawable/bottom_navigation_selector"
-        app:itemTextColor="@drawable/bottom_navigation_selector"
         app:menu="@menu/navigation" />
 
+    <!--app:itemIconTint="@drawable/bottom_navigation_selector"-->
+    <!--app:itemTextColor="@drawable/bottom_navigation_selector"-->
 </LinearLayout>

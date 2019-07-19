@@ -1,11 +1,12 @@
 package cn.jinelei.jyhome.page;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.IdRes;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -66,15 +67,16 @@ public class MainActivity extends BaseActivity {
     }
 
     public void switchFragmentTo(@IdRes int containerId, @NotNull Fragment targetFragment) {
-        Log.d(TAG, String.format("%s to %s", "null", targetFragment.getClass().getSimpleName()));
         FragmentManager supportFragmentManager = getSupportFragmentManager();
         if (currentFragment == null) {
+            Log.d(TAG, String.format("%s to %s", "null", targetFragment.getClass().getSimpleName()));
             if (targetFragment.isAdded()) {
                 supportFragmentManager.beginTransaction().show(targetFragment).commit();
             } else {
                 supportFragmentManager.beginTransaction().add(containerId, targetFragment).commit();
             }
-        } else if (currentFragment != targetFragment){
+        } else if (currentFragment != targetFragment) {
+            Log.d(TAG, String.format("%s to %s", currentFragment.getClass().getSimpleName(), targetFragment.getClass().getSimpleName()));
             if (targetFragment.isAdded()) {
                 supportFragmentManager.beginTransaction().hide(currentFragment).show(targetFragment).commit();
             } else {

@@ -3,15 +3,18 @@ package cn.jinelei.jyhome.page.base;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.view.Gravity;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.ContextThemeWrapper;
 
 import cn.jinelei.jyhome.R;
+import cn.jinelei.jyhome.base.JyCrashHandler;
+import cn.jinelei.jyhome.base.JySingleton;
 
 public abstract class BaseActivity extends AppCompatActivity implements IBaseView {
     private AlertDialog alertDialog;
@@ -29,15 +32,17 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     }
 
     public void initLoading() {
-        alertDialog = new AlertDialog.Builder(getContext())
+        alertDialog = new AlertDialog.Builder(new ContextThemeWrapper(getContext(), R.style.JyAlertDialog))
                 .setCancelable(false)
                 .setView(R.layout.dialog_loading)
                 .create();
-        WindowManager.LayoutParams layoutParams = alertDialog.getWindow().getAttributes();
-        layoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
-        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        layoutParams.gravity = Gravity.CENTER;
-        alertDialog.getWindow().setAttributes(layoutParams);
+        Window window = alertDialog.getWindow();
+        window.setContentView(R.layout.dialog_loading);
+//        WindowManager.LayoutParams layoutParams = alertDialog.getWindow().getAttributes();
+//        layoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
+//        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+//        layoutParams.gravity = Gravity.CENTER;
+//        alertDialog.getWindow().setAttributes(layoutParams);
     }
 
     @Override
@@ -75,4 +80,5 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     public Context getContext() {
         return BaseActivity.this;
     }
+
 }

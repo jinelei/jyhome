@@ -3,14 +3,14 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/home"
         android:title="@string/navigation_home" />
     <item
         android:id="@+id/navigation_discovery"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/eye_protection"
         android:title="@string/navigation_discovery" />
     <item
         android:id="@+id/navigation_user"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/nickname"
         android:title="@string/navigation_user" />
 </menu>

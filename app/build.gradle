@@ -23,6 +23,15 @@ android {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
     }
+
+    signingConfigs {
+        release {
+            storeFile file('../resources/key/jyhome.jks')
+            storePassword 'JYhome999'
+            keyAlias 'jyhome'
+            keyPassword 'JYhome999'
+        }
+    }
 }
 
 dependencies {

@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 import cn.jinelei.jyhome.R;
 import cn.jinelei.jyhome.base.JySingleton;
-import cn.jinelei.jyhome.page.TestFragment;
+import cn.jinelei.jyhome.page.test.TestFragment;
 import cn.jinelei.jyhome.page.base.BaseFragment;
 
 public class HomeFragment extends BaseFragment {

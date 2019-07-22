@@ -12,10 +12,12 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ContextThemeWrapper;
 
+import java.util.Optional;
+
 import cn.jinelei.jyhome.R;
 
 public abstract class BaseActivity extends AppCompatActivity implements IBaseView {
-    private AlertDialog alertDialog;
+    private Optional<AlertDialog> optAlertDialog;
 
     public abstract void initView();
 
@@ -34,17 +36,12 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     }
 
     public void initLoading() {
-        alertDialog = new AlertDialog.Builder(new ContextThemeWrapper(getContext(), R.style.JyAlertDialog))
-                .setCancelable(false)
-                .setView(R.layout.dialog_loading)
-                .create();
-        Window window = alertDialog.getWindow();
-        window.setContentView(R.layout.dialog_loading);
-//        WindowManager.LayoutParams layoutParams = alertDialog.getWindow().getAttributes();
-//        layoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
-//        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
-//        layoutParams.gravity = Gravity.CENTER;
-//        alertDialog.getWindow().setAttributes(layoutParams);
+        optAlertDialog = Optional.of(
+                new AlertDialog.Builder(new ContextThemeWrapper(getContext(), R.style.JyAlertDialog))
+                        .setCancelable(false)
+                        .setView(R.layout.dialog_loading)
+                        .create()
+        );
     }
 
     @Override
@@ -54,18 +51,18 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
     @Override
     public void showLoading() {
-        if (alertDialog != null) {
+        optAlertDialog.ifPresent(alertDialog -> {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
             alertDialog.show();
-        }
+        });
     }
 
     @Override
     public void hideLoading() {
-        if (alertDialog != null) {
+        optAlertDialog.ifPresent(alertDialog -> {
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
             alertDialog.hide();
-        }
+        });
     }
 
     @Override

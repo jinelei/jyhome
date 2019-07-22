@@ -1,4 +1,4 @@
-package cn.jinelei.jyhome.page.base;
+package cn.jinelei.jyhome.page.base.adapter;
 
 import android.view.View;
 

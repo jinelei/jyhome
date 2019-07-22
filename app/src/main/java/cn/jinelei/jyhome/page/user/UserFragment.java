@@ -21,11 +21,6 @@ public class UserFragment extends BaseFragment {
     }
 
     @Override
-    public int getContentViewId() {
-        return 0;
-    }
-
-    @Override
     public void initView(View view) {
 
     }

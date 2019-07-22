@@ -1,7 +1,7 @@
 package cn.jinelei.jyhome.model;
 
 import android.os.Handler;
-import cn.jinelei.jyhome.page.base.ICallback;
+import cn.jinelei.jyhome.page.base.mvp.ICallback;
 
 public class FakeNetRequestModel {
     public static void getNetData(final String param, final ICallback<String> callback) {

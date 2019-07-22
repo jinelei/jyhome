@@ -51,12 +51,6 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
-    public int getContentViewId() {
-        return 0;
-    }
-
-
-    @Override
     public void initView(View view) {
         viewPager = view.findViewById(R.id.vp_home);
     }

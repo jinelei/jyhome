@@ -3,7 +3,6 @@ package cn.jinelei.jyhome.page.base;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
@@ -15,8 +14,9 @@ import androidx.appcompat.view.ContextThemeWrapper;
 import java.util.Optional;
 
 import cn.jinelei.jyhome.R;
+import cn.jinelei.jyhome.page.base.mvp.loading.ILoadingView;
 
-public abstract class BaseActivity extends AppCompatActivity implements IBaseView {
+public abstract class BaseActivity extends AppCompatActivity implements ILoadingView {
     private Optional<AlertDialog> optAlertDialog;
 
     public abstract void initView();

@@ -14,11 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import cn.jinelei.jyhome.R;
-import cn.jinelei.jyhome.base.BaseApplication;
 import cn.jinelei.jyhome.base.JySingleton;
 import cn.jinelei.jyhome.page.base.BaseFragment;
-import cn.jinelei.jyhome.page.base.BaseRecyclerViewAdapter;
-import cn.jinelei.jyhome.page.base.BaseViewHolder;
+import cn.jinelei.jyhome.page.base.adapter.BaseRecyclerViewAdapter;
+import cn.jinelei.jyhome.page.base.adapter.BaseViewHolder;
 
 public class DiscoveryFragment extends BaseFragment {
     private static final String TAG = DiscoveryFragment.class.getSimpleName();
@@ -35,11 +34,6 @@ public class DiscoveryFragment extends BaseFragment {
         initView(rootView);
         initEvent();
         return rootView;
-    }
-
-    @Override
-    public int getContentViewId() {
-        return 0;
     }
 
     @Override

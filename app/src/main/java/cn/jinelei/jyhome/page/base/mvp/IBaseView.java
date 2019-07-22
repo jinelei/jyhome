@@ -1,12 +1,8 @@
-package cn.jinelei.jyhome.page.base;
+package cn.jinelei.jyhome.page.base.mvp;
 
 import android.content.Context;
 
 public interface IBaseView {
-    void showLoading();
-
-    void hideLoading();
-
     void showToast(String msg);
 
     void showError(Exception e);

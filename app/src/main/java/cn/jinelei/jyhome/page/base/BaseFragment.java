@@ -10,24 +10,22 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import cn.jinelei.jyhome.exception.ActivityNotAttachedException;
+import cn.jinelei.jyhome.page.base.mvp.loading.ILoadingView;
 
 
-public abstract class BaseFragment extends Fragment implements IBaseView {
-    public abstract int getContentViewId();
+public abstract class BaseFragment extends Fragment implements ILoadingView {
 
     public abstract void initView(View view);
 
     public abstract void initEvent();
 
     protected Context mContext;
-    protected View mRootView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mRootView = inflater.inflate(getContentViewId(), container, false);
         this.mContext = getActivity();
-        return mRootView;
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override

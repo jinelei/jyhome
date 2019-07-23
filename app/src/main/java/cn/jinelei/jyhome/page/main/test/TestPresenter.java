@@ -1,4 +1,4 @@
-package cn.jinelei.jyhome.page.test;
+package cn.jinelei.jyhome.page.main.test;
 
 import android.util.Log;
 

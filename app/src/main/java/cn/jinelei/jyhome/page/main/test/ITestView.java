@@ -1,4 +1,4 @@
-package cn.jinelei.jyhome.page.test;
+package cn.jinelei.jyhome.page.main.test;
 
 import cn.jinelei.jyhome.page.base.mvp.loading.ILoadingView;
 

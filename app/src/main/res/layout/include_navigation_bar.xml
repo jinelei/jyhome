@@ -3,14 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/navigation_header_container"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/title_height_size"
+    android:layout_height="wrap_content"
     android:background="@color/colorPrimary"
-    android:paddingHorizontal="8dp">
+    android:paddingHorizontal="8dp"
+    android:paddingTop="@dimen/navigation_bar_padding_top_40dp">
 
     <ImageView
         android:id="@+id/iv_nav_left"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:paddingVertical="8dp"
         android:paddingRight="8dp"
         android:scaleType="fitCenter"
@@ -35,7 +36,7 @@
     <ImageView
         android:id="@+id/iv_nav_right"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:paddingVertical="8dp"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"

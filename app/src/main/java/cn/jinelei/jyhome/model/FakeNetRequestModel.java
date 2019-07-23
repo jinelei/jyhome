@@ -3,9 +3,11 @@ package cn.jinelei.jyhome.model;
 import android.os.Handler;
 import android.util.Log;
 
+import androidx.lifecycle.ViewModel;
+
 import cn.jinelei.jyhome.page.base.mvp.ICallback;
 
-public class FakeNetRequestModel {
+public class FakeNetRequestModel extends ViewModel {
     private static final String TAG = "FakeNetRequestModel";
 
     public static void getNetData(final String param, final ICallback<String> callback) {

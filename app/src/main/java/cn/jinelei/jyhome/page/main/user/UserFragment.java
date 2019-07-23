@@ -1,4 +1,4 @@
-package cn.jinelei.jyhome.page.user;
+package cn.jinelei.jyhome.page.main.user;
 
 import android.os.Bundle;
 import android.util.Log;

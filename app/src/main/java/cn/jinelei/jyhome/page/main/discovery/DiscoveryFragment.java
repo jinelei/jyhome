@@ -1,4 +1,4 @@
-package cn.jinelei.jyhome.page.discovery;
+package cn.jinelei.jyhome.page.main.discovery;
 
 import android.os.Bundle;
 import android.util.Log;

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#ffcccccc"
     android:orientation="vertical"
-    tools:context=".page.MainActivity">
+    tools:context=".page.main.MainActivity">
 
     <!--主要显示区域-->
     <FrameLayout

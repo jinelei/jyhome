@@ -1,4 +1,4 @@
-package cn.jinelei.jyhome.page;
+package cn.jinelei.jyhome.page.main;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -13,9 +13,9 @@ import org.jetbrains.annotations.NotNull;
 
 import cn.jinelei.jyhome.R;
 import cn.jinelei.jyhome.page.base.BaseActivity;
-import cn.jinelei.jyhome.page.discovery.DiscoveryFragment;
-import cn.jinelei.jyhome.page.home.HomeFragment;
-import cn.jinelei.jyhome.page.user.UserFragment;
+import cn.jinelei.jyhome.page.main.discovery.DiscoveryFragment;
+import cn.jinelei.jyhome.page.main.home.HomeFragment;
+import cn.jinelei.jyhome.page.main.user.UserFragment;
 
 public class MainActivity extends BaseActivity {
     private static final String TAG = "MainActivity";

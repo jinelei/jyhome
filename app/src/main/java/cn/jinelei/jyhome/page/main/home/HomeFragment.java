@@ -1,4 +1,4 @@
-package cn.jinelei.jyhome.page.home;
+package cn.jinelei.jyhome.page.main.home;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 import cn.jinelei.jyhome.R;
 import cn.jinelei.jyhome.base.JySingleton;
-import cn.jinelei.jyhome.page.test.TestFragment;
+import cn.jinelei.jyhome.page.main.test.TestFragment;
 import cn.jinelei.jyhome.page.base.BaseFragment;
 
 public class HomeFragment extends BaseFragment {

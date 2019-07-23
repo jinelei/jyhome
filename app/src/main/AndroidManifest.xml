@@ -26,7 +26,7 @@
             <!--android:name="com.amap.api.v2.apikey"-->
             <!--android:value="key">c034fe01757ed4d06866eff334704a61-->
         <!--</meta-data>-->
-        <activity android:name=".page.MainActivity">
+        <activity android:name=".page.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

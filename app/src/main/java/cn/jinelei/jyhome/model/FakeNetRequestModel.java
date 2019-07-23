@@ -1,10 +1,15 @@
 package cn.jinelei.jyhome.model;
 
 import android.os.Handler;
+import android.util.Log;
+
 import cn.jinelei.jyhome.page.base.mvp.ICallback;
 
 public class FakeNetRequestModel {
+    private static final String TAG = "FakeNetRequestModel";
+
     public static void getNetData(final String param, final ICallback<String> callback) {
+        Log.d(TAG, "getNetData: " + param);
         final Handler handler = new Handler();
         handler.postDelayed(() -> {
             switch (param) {

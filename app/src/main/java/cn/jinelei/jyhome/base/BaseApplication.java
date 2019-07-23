@@ -8,7 +8,7 @@ import com.facebook.stetho.Stetho;
  * @author jinelei
  */
 public class BaseApplication extends Application {
-    private static final String TAG = BaseApplication.class.getSimpleName();
+    private static final String TAG = "BaseApplication";
 
     @Override
     public void onCreate() {

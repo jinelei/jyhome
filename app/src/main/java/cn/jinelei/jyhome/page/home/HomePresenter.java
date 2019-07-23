@@ -1,11 +1,16 @@
 package cn.jinelei.jyhome.page.home;
 
+import android.util.Log;
+
 import cn.jinelei.jyhome.model.FakeNetRequestModel;
 import cn.jinelei.jyhome.page.base.mvp.BasePresenter;
 import cn.jinelei.jyhome.page.base.mvp.ICallback;
 
 public class HomePresenter extends BasePresenter<IMainView> {
+    private static final String TAG = "HomePresenter";
+
     public void getData(String param) {
+        Log.d(TAG, "getData: " + param);
         getView().ifPresent(iMainView -> {
             iMainView.showLoading();
             FakeNetRequestModel.getNetData(param, new ICallback<String>() {

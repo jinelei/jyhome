@@ -2,6 +2,7 @@ package cn.jinelei.jyhome.base;
 
 import android.os.Environment;
 import android.os.Process;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -16,10 +17,12 @@ import java.nio.channels.FileChannel;
  * @author jinelei
  */
 public class JyCrashHandler implements Thread.UncaughtExceptionHandler {
+    private static final String TAG = "JyCrashHandler";
     public static final String LOG_FILE_PATH = String.format("%s/Android/data/cn.jinelei.jyhome/scrash.log", Environment.getExternalStorageDirectory());
 
     @Override
     public void uncaughtException(@NonNull Thread thread, @NonNull Throwable throwable) {
+        Log.e(TAG, "uncaughtException: " + throwable.getMessage());
         String stackTraceInfo = getStackTraceInfo(throwable);
         saveToFile(stackTraceInfo);
         Process.killProcess(Process.myPid());

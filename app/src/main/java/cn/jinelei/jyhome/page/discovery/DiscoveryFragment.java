@@ -1,6 +1,7 @@
 package cn.jinelei.jyhome.page.discovery;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,7 @@ import cn.jinelei.jyhome.page.base.adapter.BaseRecyclerViewAdapter;
 import cn.jinelei.jyhome.page.base.adapter.BaseViewHolder;
 
 public class DiscoveryFragment extends BaseFragment {
-    private static final String TAG = DiscoveryFragment.class.getSimpleName();
+    private static final String TAG = "DiscoveryFragment";
     private RecyclerView recyclerView;
     private final ArrayList<DiscoveryCardItem> allDiscoveryCardItems = new ArrayList<>();
     private View.OnClickListener itemClickListener = view -> {
@@ -30,6 +31,7 @@ public class DiscoveryFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Log.d(TAG, "onCreateView");
         View rootView = inflater.inflate(R.layout.fragment_discovery, container, false);
         initView(rootView);
         initEvent();
@@ -38,12 +40,14 @@ public class DiscoveryFragment extends BaseFragment {
 
     @Override
     public void initView(View view) {
+        Log.d(TAG, "initView: " + view.toString());
         recyclerView = view.findViewById(R.id.rv_discovery);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
     @Override
     public void initEvent() {
+        Log.d(TAG, "initEvent");
         for (int i = 0; i < 10; i++) {
             allDiscoveryCardItems.add(new DiscoveryCardItem(R.drawable.ic_launcher_background, R.string.app_name, itemClickListener));
         }

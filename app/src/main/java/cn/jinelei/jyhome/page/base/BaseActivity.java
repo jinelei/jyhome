@@ -2,7 +2,7 @@ package cn.jinelei.jyhome.page.base;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.WindowManager;
 import android.widget.Toast;
 
@@ -17,6 +17,7 @@ import cn.jinelei.jyhome.R;
 import cn.jinelei.jyhome.page.base.mvp.loading.ILoadingView;
 
 public abstract class BaseActivity extends AppCompatActivity implements ILoadingView {
+    private static final String TAG = "BaseActivity";
     private Optional<AlertDialog> optAlertDialog;
 
     public abstract void initView();
@@ -24,18 +25,14 @@ public abstract class BaseActivity extends AppCompatActivity implements ILoading
     public abstract void initEvent();
 
     @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
-        initLoading();
-    }
-
-    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate");
         initLoading();
     }
 
     public void initLoading() {
+        Log.d(TAG, "initLoading");
         optAlertDialog = Optional.of(
                 new AlertDialog.Builder(new ContextThemeWrapper(getContext(), R.style.JyAlertDialog))
                         .setCancelable(false)
@@ -47,10 +44,12 @@ public abstract class BaseActivity extends AppCompatActivity implements ILoading
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        Log.d(TAG, "onDestroy");
     }
 
     @Override
     public void showLoading() {
+        Log.d(TAG, "showLoading");
         optAlertDialog.ifPresent(alertDialog -> {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
             alertDialog.show();
@@ -59,6 +58,7 @@ public abstract class BaseActivity extends AppCompatActivity implements ILoading
 
     @Override
     public void hideLoading() {
+        Log.d(TAG, "hideLoading");
         optAlertDialog.ifPresent(alertDialog -> {
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
             alertDialog.hide();
@@ -67,11 +67,13 @@ public abstract class BaseActivity extends AppCompatActivity implements ILoading
 
     @Override
     public void showToast(String msg) {
+        Log.d(TAG, "showToast: " + msg);
         Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void showError(Exception e) {
+        Log.d(TAG, "showError: " + e.getMessage());
         Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
     }
 

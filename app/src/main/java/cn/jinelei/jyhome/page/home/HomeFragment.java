@@ -20,30 +20,31 @@ import cn.jinelei.jyhome.page.test.TestFragment;
 import cn.jinelei.jyhome.page.base.BaseFragment;
 
 public class HomeFragment extends BaseFragment {
-    private static final String TAG = HomeFragment.class.getSimpleName();
+    private static final String TAG = "HomeFragment";
     private ViewPager viewPager;
     private final ArrayList<Fragment> allFragments = new ArrayList<>();
 
     private ViewPager.OnPageChangeListener onPageChangeListener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            Log.v(TAG, String.format("onPageScrolled position: %d positionOffset: %f positionOffsetPixels: %d", position, positionOffset, positionOffsetPixels));
+            Log.d(TAG, String.format("onPageScrolled position: %d positionOffset: %f positionOffsetPixels: %d", position, positionOffset, positionOffsetPixels));
         }
 
         @Override
         public void onPageSelected(int position) {
-            Log.v(TAG, "onPageSelected " + position);
+            Log.d(TAG, "onPageSelected " + position);
         }
 
         @Override
         public void onPageScrollStateChanged(int state) {
-            Log.v(TAG, "onPageScrollStateChanged " + state);
+            Log.d(TAG, "onPageScrollStateChanged " + state);
         }
     };
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Log.d(TAG, "onCreateView");
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         initView(rootView);
         initEvent();
@@ -52,11 +53,13 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public void initView(View view) {
+        Log.d(TAG, "initView");
         viewPager = view.findViewById(R.id.vp_home);
     }
 
     @Override
     public void initEvent() {
+        Log.d(TAG, "initEvent");
         for (int i = 0; i < 5; i++) {
             allFragments.add(new TestFragment());
         }

@@ -11,10 +11,12 @@
     <ImageView
         android:id="@+id/iv_nav_left"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/tab_height"
         android:paddingVertical="8dp"
         android:paddingRight="8dp"
         android:scaleType="fitCenter"
+        android:src="@drawable/abc_vector_test"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,26 +24,38 @@
     <TextView
         android:id="@+id/tv_nav_title"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="@dimen/tab_height"
+        android:hint="title"
         android:textSize="@dimen/title_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/iv_nav_right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingVertical="8dp"
-        android:scaleType="fitCenter"
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/skv_nav_loading"
+        style="@style/SpinKitView.Large.Circle"
+        android:layout_width="@dimen/tab_height"
+        android:layout_height="@dimen/tab_height"
+        android:layout_gravity="center"
+        android:layout_marginEnd="8dp"
+        android:visibility="gone"
+        app:SpinKit_Color="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/tv_nav_title"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_nav_right"
+        android:layout_width="@dimen/tab_height"
+        android:layout_height="@dimen/tab_height"
+        android:layout_marginEnd="8dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/abc_vector_test"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

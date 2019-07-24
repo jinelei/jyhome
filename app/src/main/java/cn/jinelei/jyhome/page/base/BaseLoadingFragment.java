@@ -13,7 +13,7 @@ import cn.jinelei.jyhome.page.base.feature.ILoadingDialog;
 import cn.jinelei.jyhome.page.base.feature.IToastFeature;
 
 
-public abstract class BaseFragment extends Fragment implements ILoadingDialog, IToastFeature {
+public abstract class BaseLoadingFragment extends Fragment implements ILoadingDialog, IToastFeature {
     private static final String TAG = "BaseFragment";
 
     public abstract void initView(View view);

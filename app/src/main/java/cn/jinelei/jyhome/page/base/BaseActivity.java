@@ -17,9 +17,11 @@ import androidx.appcompat.view.ContextThemeWrapper;
 import java.util.Optional;
 
 import cn.jinelei.jyhome.R;
-import cn.jinelei.jyhome.page.base.mvp.loading.ILoadingView;
+import cn.jinelei.jyhome.page.base.feature.IBaseFeature;
+import cn.jinelei.jyhome.page.base.feature.ILoadingDialog;
+import cn.jinelei.jyhome.page.base.feature.IToastFeature;
 
-public abstract class BaseActivity extends AppCompatActivity implements ILoadingView {
+public abstract class BaseActivity extends AppCompatActivity implements IBaseFeature, ILoadingDialog, IToastFeature {
     private static final String TAG = "BaseActivity";
     private Optional<AlertDialog> optAlertDialog;
 
@@ -59,8 +61,8 @@ public abstract class BaseActivity extends AppCompatActivity implements ILoading
     }
 
     @Override
-    public void showLoading() {
-        Log.d(TAG, "showLoading");
+    public void showLoadingDialog() {
+        Log.d(TAG, "showLoadingDialog");
         optAlertDialog.ifPresent(alertDialog -> {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
             alertDialog.show();
@@ -68,8 +70,8 @@ public abstract class BaseActivity extends AppCompatActivity implements ILoading
     }
 
     @Override
-    public void hideLoading() {
-        Log.d(TAG, "hideLoading");
+    public void hideLoadingDialog() {
+        Log.d(TAG, "hideLoadingDialog");
         optAlertDialog.ifPresent(alertDialog -> {
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
             alertDialog.hide();
@@ -80,12 +82,6 @@ public abstract class BaseActivity extends AppCompatActivity implements ILoading
     public void showToast(String msg) {
         Log.d(TAG, "showToast: " + msg);
         Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void showError(Exception e) {
-        Log.d(TAG, "showError: " + e.getMessage());
-        Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
     }
 
     @Override

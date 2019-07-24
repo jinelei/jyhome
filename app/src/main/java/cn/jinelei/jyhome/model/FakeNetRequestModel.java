@@ -5,7 +5,7 @@ import android.util.Log;
 
 import androidx.lifecycle.ViewModel;
 
-import cn.jinelei.jyhome.page.base.mvp.ICallback;
+import cn.jinelei.jyhome.page.base.feature.ICallback;
 
 public class FakeNetRequestModel extends ViewModel {
     private static final String TAG = "FakeNetRequestModel";

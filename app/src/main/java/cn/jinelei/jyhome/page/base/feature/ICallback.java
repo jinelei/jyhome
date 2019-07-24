@@ -1,4 +1,4 @@
-package cn.jinelei.jyhome.page.base.mvp;
+package cn.jinelei.jyhome.page.base.feature;
 
 public interface ICallback<T> {
     void onSuccess(T data);

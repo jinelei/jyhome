@@ -6,20 +6,18 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import java.util.Optional;
 import java.util.Random;
 
 import cn.jinelei.jyhome.model.User;
 
 public class UserViewModel extends ViewModel {
     private static final String TAG = "UserViewModel";
+    private final Handler handler = new Handler();
     public MutableLiveData<User> userData = new MutableLiveData<>();
-    private User user = new User();
-    private Optional<User> optUser = Optional.empty();
 
     public void getUser() {
-        Log.d(TAG, "getUser: postDelayed 30000");
-        new Handler().postDelayed(() -> {
+        Log.d(TAG, "getUser: postDelayed 3000");
+        handler.postDelayed(() -> {
             User user = new User();
             Random random = new Random();
             user.setAvator("avator_" + random.nextInt(10));
@@ -34,6 +32,5 @@ public class UserViewModel extends ViewModel {
     @Override
     protected void onCleared() {
         super.onCleared();
-        optUser = Optional.empty();
     }
 }

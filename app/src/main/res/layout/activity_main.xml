@@ -23,10 +23,10 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/tab_height"
         android:layout_alignParentBottom="true"
+        app:itemIconTint="@drawable/bottom_navigation_selector"
+        app:itemTextColor="@drawable/bottom_navigation_selector"
         android:layout_gravity="bottom"
         android:layout_marginBottom="4dp"
         app:menu="@menu/navigation" />
 
-    <!--app:itemIconTint="@drawable/bottom_navigation_selector"-->
-    <!--app:itemTextColor="@drawable/bottom_navigation_selector"-->
 </LinearLayout>

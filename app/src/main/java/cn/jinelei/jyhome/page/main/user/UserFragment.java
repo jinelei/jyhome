@@ -8,16 +8,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 
 import cn.jinelei.jyhome.R;
-import cn.jinelei.jyhome.base.BaseApplication;
 import cn.jinelei.jyhome.base.JySingleton;
 import cn.jinelei.jyhome.page.base.BaseFragment;
 
 public class UserFragment extends BaseFragment {
     private static final String TAG = "UserFragment";
     private TextView tvTest;
+    private UserViewModel userViewModel;
 
     @Nullable
     @Override
@@ -38,9 +38,15 @@ public class UserFragment extends BaseFragment {
     @Override
     public void initEvent() {
         Log.d(TAG, "initEvent");
-        UserViewModel userViewModel = new ViewModelProvider.AndroidViewModelFactory(BaseApplication.Singleton.INSTANCE.getInstance()).create(UserViewModel.class);
+        userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
         userViewModel.userData.observe(this, user -> {
+            hideLoading();
             tvTest.setText(user.toString());
+        });
+        tvTest.setOnClickListener(v -> {
+            Log.d(TAG, "initEvent: getUser");
+            showLoading();
+            userViewModel.getUser();
         });
     }
 

@@ -12,7 +12,11 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.common.base.Strings;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import cn.jinelei.jyhome.R;
 import cn.jinelei.jyhome.base.JySingleton;
@@ -57,7 +61,11 @@ public class DiscoveryFragment extends BaseFragment {
                 LinearLayout llContainer = holder.getChildView(R.id.item_discovery_container);
                 TextView tvTitle = holder.getChildView(R.id.item_discovery_title);
                 llContainer.setOnClickListener(item.listener);
-                tvTitle.setText(getActivity().getString(item.titleRes));
+                if (!Strings.isNullOrEmpty(item.title)) {
+                    tvTitle.setText(item.title);
+                } else {
+                    tvTitle.setText(getActivity().getString(item.titleRes));
+                }
             }
         };
         recyclerView.setAdapter(adapter);
@@ -66,11 +74,18 @@ public class DiscoveryFragment extends BaseFragment {
     public static class DiscoveryCardItem {
         private int backgroundRes;
         private int titleRes;
+        private String title;
         private View.OnClickListener listener;
 
         public DiscoveryCardItem(int backgroundRes, int titleRes, View.OnClickListener listener) {
             this.backgroundRes = backgroundRes;
             this.titleRes = titleRes;
+            this.listener = listener;
+        }
+
+        public DiscoveryCardItem(int backgroundRes, String title, View.OnClickListener listener) {
+            this.backgroundRes = backgroundRes;
+            this.title = title;
             this.listener = listener;
         }
     }

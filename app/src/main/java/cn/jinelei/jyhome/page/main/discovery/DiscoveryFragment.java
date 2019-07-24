@@ -14,9 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.common.base.Strings;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import cn.jinelei.jyhome.R;
 import cn.jinelei.jyhome.base.JySingleton;

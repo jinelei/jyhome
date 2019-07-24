@@ -68,6 +68,10 @@ public class MainActivity extends BaseActivity {
         getSupportFragmentManager().beginTransaction().add(R.id.frame_main, currentFragment).commit();
     }
 
+    public Fragment getCurrentFragment() {
+        return currentFragment;
+    }
+
     public void switchFragmentTo(@IdRes int containerId, @NotNull Fragment targetFragment) {
         Log.d(TAG, "switchFragmentTo: from " + currentFragment + " to " + targetFragment.getTag());
         FragmentManager supportFragmentManager = getSupportFragmentManager();

@@ -5,14 +5,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.github.ybq.android.spinkit.SpinKitView;
-import com.github.ybq.android.spinkit.sprite.Sprite;
-import com.github.ybq.android.spinkit.style.DoubleBounce;
 
 import cn.jinelei.jyhome.R;
 import cn.jinelei.jyhome.base.JySingleton;
@@ -23,7 +22,10 @@ public class UserFragment extends BaseFragment implements ISilenceLoading {
     private static final String TAG = "UserFragment";
     private TextView tvTest;
     private UserViewModel userViewModel;
-    private SpinKitView skvNavBarLoading;
+    private TextView tvTitle;
+    private ImageView ivNavLeft;
+    private ImageView ivNavRight;
+    private SpinKitView skvNavLoading;
 
     @Nullable
     @Override
@@ -40,7 +42,11 @@ public class UserFragment extends BaseFragment implements ISilenceLoading {
         Log.d(TAG, "initView: " + view.toString());
         tvTest = view.findViewById(R.id.tv_test);
         View navBar = view.findViewById(R.id.nav_bar);
-        skvNavBarLoading = navBar.findViewById(R.id.skv_nav_loading);
+        tvTitle = navBar.findViewById(R.id.tv_nav_title);
+        ivNavLeft = navBar.findViewById(R.id.iv_nav_left);
+        ivNavRight = navBar.findViewById(R.id.iv_nav_right);
+        skvNavLoading = navBar.findViewById(R.id.skv_nav_loading);
+        tvTitle.setText(R.string.navigation_user);
     }
 
     @Override
@@ -62,16 +68,13 @@ public class UserFragment extends BaseFragment implements ISilenceLoading {
 
     @Override
     public void showSilenceLoading() {
-        skvNavBarLoading.setVisibility(View.VISIBLE);
-        Sprite doubleBounce = new DoubleBounce();
-        skvNavBarLoading.setIndeterminateDrawable(doubleBounce);
+        skvNavLoading.setVisibility(View.VISIBLE);
+        skvNavLoading.setIndeterminate(true);
     }
 
     @Override
     public void hideSilenceLoading() {
-        skvNavBarLoading.setVisibility(View.GONE);
-        Sprite doubleBounce = new DoubleBounce();
-        skvNavBarLoading.setIndeterminateDrawable(doubleBounce);
+        skvNavLoading.setVisibility(View.GONE);
     }
 
     public enum Singleton implements JySingleton<UserFragment> {

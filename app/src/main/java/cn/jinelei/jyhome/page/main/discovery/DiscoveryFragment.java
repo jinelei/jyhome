@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -12,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.github.ybq.android.spinkit.SpinKitView;
 import com.google.common.base.Strings;
 
 import java.util.ArrayList;
@@ -25,6 +27,10 @@ import cn.jinelei.jyhome.page.base.adapter.BaseViewHolder;
 public class DiscoveryFragment extends BaseFragment {
     private static final String TAG = "DiscoveryFragment";
     private RecyclerView recyclerView;
+    private TextView tvTitle;
+    private ImageView ivNavLeft;
+    private ImageView ivNavRight;
+    private SpinKitView skvNavLoading;
     private final ArrayList<DiscoveryCardItem> allDiscoveryCardItems = new ArrayList<>();
     private View.OnClickListener itemClickListener = view -> {
 
@@ -43,6 +49,12 @@ public class DiscoveryFragment extends BaseFragment {
     @Override
     public void initView(View view) {
         Log.d(TAG, "initView: " + view.toString());
+        View navBar = view.findViewById(R.id.nav_bar);
+        tvTitle = navBar.findViewById(R.id.tv_nav_title);
+        ivNavLeft = navBar.findViewById(R.id.iv_nav_left);
+        ivNavRight = navBar.findViewById(R.id.iv_nav_right);
+        skvNavLoading = navBar.findViewById(R.id.skv_nav_loading);
+        tvTitle.setText(R.string.navigation_discovery);
         recyclerView = view.findViewById(R.id.rv_discovery);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }

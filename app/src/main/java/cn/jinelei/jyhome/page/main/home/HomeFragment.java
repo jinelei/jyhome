@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,16 +14,23 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.github.ybq.android.spinkit.SpinKitView;
+
 import java.util.ArrayList;
 
 import cn.jinelei.jyhome.R;
 import cn.jinelei.jyhome.base.JySingleton;
-import cn.jinelei.jyhome.page.main.test.TestFragment;
 import cn.jinelei.jyhome.page.base.BaseFragment;
+import cn.jinelei.jyhome.page.base.feature.ISilenceLoading;
+import cn.jinelei.jyhome.page.main.home.test.TestFragment;
 
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment implements ISilenceLoading {
     private static final String TAG = "HomeFragment";
     private ViewPager viewPager;
+    private TextView tvTitle;
+    private ImageView ivNavLeft;
+    private ImageView ivNavRight;
+    private SpinKitView skvNavLoading;
     private final ArrayList<Fragment> allFragments = new ArrayList<>();
 
     private ViewPager.OnPageChangeListener onPageChangeListener = new ViewPager.OnPageChangeListener() {
@@ -55,6 +64,12 @@ public class HomeFragment extends BaseFragment {
     public void initView(View view) {
         Log.d(TAG, "initView");
         viewPager = view.findViewById(R.id.vp_home);
+        View navBar = view.findViewById(R.id.nav_bar);
+        tvTitle = navBar.findViewById(R.id.tv_nav_title);
+        ivNavLeft = navBar.findViewById(R.id.iv_nav_left);
+        ivNavRight = navBar.findViewById(R.id.iv_nav_right);
+        skvNavLoading = navBar.findViewById(R.id.skv_nav_loading);
+        tvTitle.setText(R.string.navigation_home);
     }
 
     @Override
@@ -76,6 +91,18 @@ public class HomeFragment extends BaseFragment {
             }
         });
         viewPager.setOnPageChangeListener(onPageChangeListener);
+    }
+
+    @Override
+    public void showSilenceLoading() {
+        skvNavLoading.setVisibility(View.VISIBLE);
+        skvNavLoading.setIndeterminate(true);
+    }
+
+    @Override
+    public void hideSilenceLoading() {
+        skvNavLoading.setVisibility(View.GONE);
+        skvNavLoading.setIndeterminate(false);
     }
 
 

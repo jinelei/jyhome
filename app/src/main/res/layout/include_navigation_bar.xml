@@ -25,7 +25,9 @@
         android:id="@+id/tv_nav_title"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/tab_height"
+        android:gravity="center"
         android:hint="title"
+        android:textAlignment="center"
         android:textSize="@dimen/title_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,13 +37,13 @@
 
     <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/skv_nav_loading"
-        style="@style/SpinKitView.Large.Circle"
+        style="@style/SpinKitView.Small.ThreeBounce"
         android:layout_width="@dimen/tab_height"
         android:layout_height="@dimen/tab_height"
         android:layout_gravity="center"
         android:layout_marginEnd="8dp"
         android:visibility="gone"
-        app:SpinKit_Color="@color/colorAccent"
+        app:SpinKit_Color="@color/colorSilenceLoading"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

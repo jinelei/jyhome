@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.github.ybq.android.spinkit.SpinKitView;
@@ -78,16 +78,18 @@ public class HomeFragment extends BaseFragment implements ISilenceLoading {
         for (int i = 0; i < 5; i++) {
             allFragments.add(new TestFragment());
         }
-        viewPager.setAdapter(new FragmentPagerAdapter(getActivity().getSupportFragmentManager()) {
+        viewPager.setAdapter(new FragmentStatePagerAdapter(getActivity().getSupportFragmentManager()) {
+            private int mRealSize = allFragments.size();
+
             @NonNull
             @Override
             public Fragment getItem(int position) {
-                return allFragments.get(position % allFragments.size());
+                return allFragments.get(position % mRealSize);
             }
 
             @Override
             public int getCount() {
-                return allFragments.size();
+                return mRealSize;
             }
         });
         viewPager.setOnPageChangeListener(onPageChangeListener);

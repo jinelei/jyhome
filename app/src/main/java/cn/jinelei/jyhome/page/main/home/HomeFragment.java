@@ -24,7 +24,7 @@ import cn.jinelei.jyhome.page.base.BaseFragment;
 import cn.jinelei.jyhome.page.base.feature.ISilenceLoading;
 import cn.jinelei.jyhome.page.main.home.test.TestFragment;
 
-public class HomeFragment extends BaseFragment implements ISilenceLoading {
+public class HomeFragment extends BaseFragment {
     private static final String TAG = "HomeFragment";
     private ViewPager viewPager;
     private TextView tvTitle;
@@ -94,19 +94,6 @@ public class HomeFragment extends BaseFragment implements ISilenceLoading {
         });
         viewPager.setOnPageChangeListener(onPageChangeListener);
     }
-
-    @Override
-    public void showSilenceLoading() {
-        skvNavLoading.setVisibility(View.VISIBLE);
-        skvNavLoading.setIndeterminate(true);
-    }
-
-    @Override
-    public void hideSilenceLoading() {
-        skvNavLoading.setVisibility(View.GONE);
-        skvNavLoading.setIndeterminate(false);
-    }
-
 
     public enum Singleton implements JySingleton<HomeFragment> {
         INSTANCE {

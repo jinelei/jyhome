@@ -22,7 +22,7 @@ public class TestFragment extends BaseFragment {
     private TextView tvMessage;
 
     private final View.OnClickListener clickListener = view -> {
-        ((HomeFragment) ((MainActivity) TestFragment.this.mContext).getCurrentFragment()).showSilenceLoading();
+        ((HomeFragment) ((MainActivity) TestFragment.this.mContext).getCurrentFragment()).showSilenceLoading(getContext());
         switch (view.getId()) {
             case R.id.btn_success:
                 testViewModel.getTestData("success");
@@ -55,7 +55,7 @@ public class TestFragment extends BaseFragment {
         Log.d(TAG, "onCreate");
         testViewModel = ViewModelProviders.of(this).get(TestViewModel.class);
         testViewModel.testData.observe(this, s -> {
-            ((HomeFragment) ((MainActivity) TestFragment.this.mContext).getCurrentFragment()).hideSilenceLoading();
+            ((HomeFragment) ((MainActivity) TestFragment.this.mContext).getCurrentFragment()).hideSilenceLoading(getContext());
             tvMessage.append(s + "\n");
         });
     }

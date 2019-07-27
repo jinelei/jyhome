@@ -8,6 +8,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import cn.jinelei.jyhome.base.BaseApplication;
 import cn.jinelei.jyhome.exception.ActivityNotAttachedException;
 import cn.jinelei.jyhome.page.base.feature.ILoadingDialog;
 import cn.jinelei.jyhome.page.base.feature.IToastFeature;
@@ -21,12 +22,14 @@ public abstract class BaseFragment extends Fragment implements ILoadingDialog, I
     public abstract void initEvent();
 
     protected Context mContext;
+    protected BaseApplication mBaseApplication;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate");
         this.mContext = getActivity();
+        this.mBaseApplication = BaseApplication.Singleton.INSTANCE.getInstance();
     }
 
     @Override

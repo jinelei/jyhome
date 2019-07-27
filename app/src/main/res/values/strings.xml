@@ -4,6 +4,11 @@
     <string name="navigation_discovery">discovery</string>
     <string name="navigation_user">user</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="user_height">height</string>
+    <string name="user_weight">weight</string>
+    <string name="user_birth">birth</string>
+    <string name="user_gender">gender</string>
+    <string name="user_male">male</string>
+    <string name="user_female">female</string>
 </resources>

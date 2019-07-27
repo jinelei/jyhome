@@ -1,31 +1,66 @@
 package cn.jinelei.jyhome.page.main.user;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.github.ybq.android.spinkit.SpinKitView;
 
+import java.util.Date;
+import java.util.Random;
+
 import cn.jinelei.jyhome.R;
 import cn.jinelei.jyhome.base.JySingleton;
+import cn.jinelei.jyhome.model.User;
 import cn.jinelei.jyhome.page.base.BaseFragment;
 import cn.jinelei.jyhome.page.base.feature.ISilenceLoading;
 
 public class UserFragment extends BaseFragment implements ISilenceLoading {
     private static final String TAG = "UserFragment";
-    private TextView tvTest;
+    private final Random random = new Random();
     private UserViewModel userViewModel;
-    private TextView tvTitle;
-    private ImageView ivNavLeft;
-    private ImageView ivNavRight;
-    private SpinKitView skvNavLoading;
+    private TextView tvHeight;
+    private TextView tvGender;
+    private TextView tvWeight;
+    private TextView tvBirth;
+    private SpinKitView skvSilenceLoading;
+
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            super.handleMessage(msg);
+        }
+    };
+
+    private View.OnClickListener mUserInfoOnClickListener = view -> {
+        switch (view.getId()) {
+            case R.id.tv_height:
+            case R.id.cl_height:
+                userViewModel.updateUser(User.FIELD_HEIGHT, random.nextDouble());
+                break;
+            case R.id.tv_weight:
+            case R.id.cl_weight:
+                userViewModel.updateUser(User.FIELD_WEIGHT, random.nextDouble());
+                break;
+            case R.id.tv_birth:
+            case R.id.cl_birth:
+                userViewModel.updateUser(User.FIELD_BIRTH, random.nextLong());
+                break;
+            case R.id.tv_gender:
+            case R.id.cl_gender:
+                userViewModel.updateUser(User.FIELD_GENDER, random.nextInt(2));
+                break;
+        }
+    };
 
     @Nullable
     @Override
@@ -40,13 +75,15 @@ public class UserFragment extends BaseFragment implements ISilenceLoading {
     @Override
     public void initView(View view) {
         Log.d(TAG, "initView: " + view.toString());
-        tvTest = view.findViewById(R.id.tv_test);
-        View navBar = view.findViewById(R.id.nav_bar);
-        tvTitle = navBar.findViewById(R.id.tv_nav_title);
-        ivNavLeft = navBar.findViewById(R.id.iv_nav_left);
-        ivNavRight = navBar.findViewById(R.id.iv_nav_right);
-        skvNavLoading = navBar.findViewById(R.id.skv_nav_loading);
-        tvTitle.setText(R.string.navigation_user);
+        tvHeight = view.findViewById(R.id.tv_height);
+        tvWeight = view.findViewById(R.id.tv_weight);
+        tvBirth = view.findViewById(R.id.tv_birth);
+        tvGender = view.findViewById(R.id.tv_gender);
+        skvSilenceLoading = view.findViewById(R.id.skv_nav_loading);
+        view.findViewById(R.id.cl_height).setOnClickListener(mUserInfoOnClickListener);
+        view.findViewById(R.id.cl_weight).setOnClickListener(mUserInfoOnClickListener);
+        view.findViewById(R.id.cl_gender).setOnClickListener(mUserInfoOnClickListener);
+        view.findViewById(R.id.cl_birth).setOnClickListener(mUserInfoOnClickListener);
     }
 
     @Override
@@ -55,26 +92,27 @@ public class UserFragment extends BaseFragment implements ISilenceLoading {
         userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
         userViewModel.userData.observe(this, user -> {
             hideSilenceLoading();
-            tvTest.setClickable(true);
-            tvTest.setText(user.toString());
+            tvBirth.setText(mBaseApplication.sdfyyyyMMdd_hhmmss.format(new Date(user.getBirth())));
+            tvGender.setText(user.getGender().getName());
+            tvHeight.setText(String.format("%.02f", user.getHeight()));
+            tvWeight.setText(String.format("%.02f", user.getWeight()));
         });
-        tvTest.setOnClickListener(v -> {
-            Log.d(TAG, "initEvent: getUser");
+        mHandler.postDelayed(() -> {
             showSilenceLoading();
-            tvTest.setClickable(false);
             userViewModel.getUser();
-        });
+        }, 3000);
     }
 
     @Override
     public void showSilenceLoading() {
-        skvNavLoading.setVisibility(View.VISIBLE);
-        skvNavLoading.setIndeterminate(true);
+        skvSilenceLoading.setVisibility(View.VISIBLE);
+        skvSilenceLoading.setIndeterminate(true);
     }
 
     @Override
     public void hideSilenceLoading() {
-        skvNavLoading.setVisibility(View.GONE);
+        skvSilenceLoading.setVisibility(View.GONE);
+        skvSilenceLoading.setIndeterminate(false);
     }
 
     public enum Singleton implements JySingleton<UserFragment> {

@@ -4,4 +4,13 @@
     <dimen name="navigation_bar_padding_top_40dp">40dp</dimen>
     <dimen name="title_height_size">0dp</dimen>
     <dimen name="title_size">15sp</dimen>
+    <dimen name="user_header_height">240dp</dimen>
+    <dimen name="user_info_margin_horizontal">20dp</dimen>
+    <dimen name="user_info_item_padding_vertical">10dp</dimen>
+    <dimen name="user_info_item_icon_padding_vertical">8dp</dimen>
+    <dimen name="user_info_item_icon_size">30dp</dimen>
+    <dimen name="user_info_item_inner_ele_margin">5dp</dimen>
+    <dimen name="user_info_item_label_font_size">14sp</dimen>
+    <dimen name="user_info_item_value_font_size">12sp</dimen>
+    <dimen name="user_info_item_right_arrow_size">20dp</dimen>
 </resources>

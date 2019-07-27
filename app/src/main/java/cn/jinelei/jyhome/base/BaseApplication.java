@@ -4,11 +4,14 @@ import android.app.Application;
 
 import com.facebook.stetho.Stetho;
 
+import java.text.SimpleDateFormat;
+
 /**
  * @author jinelei
  */
 public class BaseApplication extends Application {
     private static final String TAG = "BaseApplication";
+    public static final SimpleDateFormat sdfyyyyMMdd_hhmmss = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
     @Override
     public void onCreate() {

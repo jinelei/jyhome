@@ -45,18 +45,22 @@ public class UserFragment extends BaseFragment implements ISilenceLoading {
         switch (view.getId()) {
             case R.id.tv_height:
             case R.id.cl_height:
+                showSilenceLoading();
                 userViewModel.updateUser(User.FIELD_HEIGHT, random.nextDouble());
                 break;
             case R.id.tv_weight:
             case R.id.cl_weight:
+                showSilenceLoading();
                 userViewModel.updateUser(User.FIELD_WEIGHT, random.nextDouble());
                 break;
             case R.id.tv_birth:
             case R.id.cl_birth:
+                showSilenceLoading();
                 userViewModel.updateUser(User.FIELD_BIRTH, random.nextLong());
                 break;
             case R.id.tv_gender:
             case R.id.cl_gender:
+                showSilenceLoading();
                 userViewModel.updateUser(User.FIELD_GENDER, random.nextInt(2));
                 break;
         }

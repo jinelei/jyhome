@@ -101,7 +101,7 @@ public class UserViewModel extends ViewModel {
                 needRefresh = false;
         }
         if (needRefresh) {
-            userData.postValue(user);
+            handler.postDelayed(() -> userData.postValue(user), 1000);
         }
     }
 

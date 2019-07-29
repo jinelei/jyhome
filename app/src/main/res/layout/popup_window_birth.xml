@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/ll_btn_container"
+        layout="@layout/include_popup_window_button" />
+
+
+    <com.wx.wheelview.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/popup_window_wheelview_height"
+            android:layout_marginHorizontal="@dimen/popup_window_wheelview_margin_horizontal"
+            android:layout_marginVertical="@dimen/popup_window_wheelview_margin_vertical"
+            android:orientation="horizontal">
+
+            <com.wx.wheelview.widget.WheelView
+                android:id="@+id/first_wheelview"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <com.wx.wheelview.widget.WheelView
+                android:id="@+id/second_wheelview"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <com.wx.wheelview.widget.WheelView
+                android:id="@+id/third_wheelview"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+    </com.wx.wheelview.widget.NestedScrollView>
+
+</LinearLayout>

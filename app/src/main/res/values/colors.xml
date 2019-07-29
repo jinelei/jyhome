@@ -12,4 +12,7 @@
     <color name="color_separate_line">#777777</color>
     <color name="color_mine_value_title">#7F838D</color>
     <color name="color_mine_label_title">#ffffff</color>
+    <!--popup window-->
+    <color name="color_popup_window_button_text_color">#FE2F58</color>
+    <color name="color_popup_window_separate_color">#333333</color>
 </resources>

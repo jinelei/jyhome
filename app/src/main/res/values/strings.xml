@@ -11,4 +11,6 @@
     <string name="user_gender">gender</string>
     <string name="user_male">male</string>
     <string name="user_female">female</string>
+
+    <string name="popup_window_confirm">confirm</string>
 </resources>

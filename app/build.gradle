@@ -59,6 +59,7 @@ dependencies {
     implementation 'android.arch.lifecycle:extensions:' + rootProject.lifecycle_version
     implementation 'android.arch.lifecycle:common-java8:' + rootProject.lifecycle_version
     implementation 'com.github.ybq:Android-SpinKit:1.2.0'
+    implementation 'com.wx.wheelview:wheelview:1.3.3'
     annotationProcessor 'android.arch.lifecycle:compiler:' + rootProject.lifecycle_version
     // amap
 //    implementation 'com.amap.api:3dmap:5.0.0'

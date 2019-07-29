@@ -13,4 +13,16 @@
     <dimen name="user_info_item_label_font_size">14sp</dimen>
     <dimen name="user_info_item_value_font_size">12sp</dimen>
     <dimen name="user_info_item_right_arrow_size">20dp</dimen>
+    <!--popup window-->
+    <dimen name="popup_window_title_height">20dp</dimen>
+    <dimen name="popup_window_separate_height">2dp</dimen>
+    <dimen name="popup_window_title_margin_horizontal">10dp</dimen>
+    <dimen name="popup_window_title_margin_vertical">10dp</dimen>
+    <dimen name="popup_window_title_font_size">15dp</dimen>
+    <dimen name="popup_window_wheelview_margin_horizontal">30dp</dimen>
+    <dimen name="popup_window_wheelview_margin_vertical">30dp</dimen>
+    <dimen name="popup_window_wheelview_item_margin_vertical">15dp</dimen>
+    <dimen name="popup_window_wheelview_padding_vertical">30dp</dimen>
+    <dimen name="popup_window_wheelview_height">280dp</dimen>
+
 </resources>

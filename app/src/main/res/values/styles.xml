@@ -13,4 +13,10 @@
         <item name="android:layout_marginBottom">0dp</item>
     </style>
 
+
+    <style name="popup_window_anim">
+        <item name="android:windowEnterAnimation">@anim/popup_window_enter</item>
+        <item name="android:windowExitAnimation">@anim/popup_window_exit</item>
+    </style>
+
 </resources>

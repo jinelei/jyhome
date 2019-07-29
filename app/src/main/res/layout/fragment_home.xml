@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<cn.jinelei.jyhome.page.base.layout.NestedScrollingLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layout_home"
     android:layout_width="match_parent"
@@ -8,18 +8,31 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <include
-        android:id="@+id/nav_bar"
-        layout="@layout/include_navigation_bar" />
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/vp_home"
+    <ImageView
+        android:id="@+id/iv_home_header"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/home_header" />
 
-</LinearLayout>
+    <!--<include-->
+    <!--android:id="@+id/nav_bar"-->
+    <!--layout="@layout/include_navigation_bar" />-->
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vp_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.core.widget.NestedScrollView>
+
+
+</cn.jinelei.jyhome.page.base.layout.NestedScrollingLayout>

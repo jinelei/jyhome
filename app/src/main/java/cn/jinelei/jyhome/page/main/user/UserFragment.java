@@ -72,10 +72,7 @@ public class UserFragment extends BaseFragment {
                 userViewModel.updateUser(User.FIELD_WEIGHT, random.nextDouble());
                 break;
             case R.id.cl_birth:
-//                showSilenceLoading(UserFragment.this);
-//                view.setClickable(false);
-//                userViewModel.updateUser(User.FIELD_BIRTH, random.nextLong());
-                setBackgroundAlpha(0.7f);
+//                setBackgroundAlpha(0.7f);
                 mBirthPopupWindow.showAtLocation(rootView, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
                 break;
             case R.id.cl_gender:

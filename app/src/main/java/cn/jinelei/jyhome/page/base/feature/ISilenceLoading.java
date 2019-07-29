@@ -1,19 +1,17 @@
 package cn.jinelei.jyhome.page.base.feature;
 
-import android.content.Context;
-
 import com.github.ybq.android.spinkit.SpinKitView;
 
-public interface ISilenceLoading {
+public interface ISilenceLoading<T> {
 
-    void attachSilenceLoading(Context context, SpinKitView view);
+    void attachSilenceLoading(T t, SpinKitView view);
 
-    void detachSilenceLoading(Context context);
+    void detachSilenceLoading(T t);
 
-    boolean isAttachedSilenceLoading(Context context);
+    boolean isAttachedSilenceLoading(T t);
 
-    void showSilenceLoading(Context context);
+    void showSilenceLoading(T t);
 
-    void hideSilenceLoading(Context context);
+    void hideSilenceLoading(T t);
 
 }

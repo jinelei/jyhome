@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
 
+import java.util.Optional;
+
 import cn.jinelei.jyhome.R;
 import cn.jinelei.jyhome.page.base.BaseFragment;
 import cn.jinelei.jyhome.page.main.MainActivity;
@@ -22,7 +24,11 @@ public class TestFragment extends BaseFragment {
     private TextView tvMessage;
 
     private final View.OnClickListener clickListener = view -> {
-        ((HomeFragment) ((MainActivity) TestFragment.this.mContext).getCurrentFragment()).showSilenceLoading(getContext());
+        Optional.ofNullable(mContext)
+                .filter(c -> c instanceof MainActivity)
+                .flatMap(c -> Optional.ofNullable(((MainActivity) c).getCurrentFragment()))
+                .filter(fragment -> fragment instanceof HomeFragment)
+                .ifPresent(fragment -> ((HomeFragment) fragment).showSilenceLoading(HomeFragment.Singleton.INSTANCE.getInstance()));
         switch (view.getId()) {
             case R.id.btn_success:
                 testViewModel.getTestData("success");
@@ -55,7 +61,11 @@ public class TestFragment extends BaseFragment {
         Log.d(TAG, "onCreate");
         testViewModel = ViewModelProviders.of(this).get(TestViewModel.class);
         testViewModel.testData.observe(this, s -> {
-            ((HomeFragment) ((MainActivity) TestFragment.this.mContext).getCurrentFragment()).hideSilenceLoading(getContext());
+            Optional.ofNullable(mContext)
+                    .filter(c -> c instanceof MainActivity)
+                    .flatMap(c -> Optional.ofNullable(((MainActivity) c).getCurrentFragment()))
+                    .filter(fragment -> fragment instanceof HomeFragment)
+                    .ifPresent(fragment -> ((HomeFragment) fragment).hideSilenceLoading(HomeFragment.Singleton.INSTANCE.getInstance()));
             tvMessage.append(s + "\n");
         });
     }

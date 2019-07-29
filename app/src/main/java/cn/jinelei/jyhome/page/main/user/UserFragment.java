@@ -48,22 +48,22 @@ public class UserFragment extends BaseFragment {
     private View.OnClickListener mUserInfoOnClickListener = view -> {
         switch (view.getId()) {
             case R.id.cl_height:
-                showSilenceLoading(getContext());
+                showSilenceLoading(UserFragment.this);
                 view.setClickable(false);
                 userViewModel.updateUser(User.FIELD_HEIGHT, random.nextDouble());
                 break;
             case R.id.cl_weight:
-                showSilenceLoading(getContext());
+                showSilenceLoading(UserFragment.this);
                 view.setClickable(false);
                 userViewModel.updateUser(User.FIELD_WEIGHT, random.nextDouble());
                 break;
             case R.id.cl_birth:
-                showSilenceLoading(getContext());
+                showSilenceLoading(UserFragment.this);
                 view.setClickable(false);
                 userViewModel.updateUser(User.FIELD_BIRTH, random.nextLong());
                 break;
             case R.id.cl_gender:
-                showSilenceLoading(getContext());
+                showSilenceLoading(UserFragment.this);
                 view.setClickable(false);
                 userViewModel.updateUser(User.FIELD_GENDER, random.nextInt(2));
                 break;
@@ -83,7 +83,7 @@ public class UserFragment extends BaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        detachSilenceLoading(getContext());
+        detachSilenceLoading(UserFragment.this);
     }
 
     @Override
@@ -98,7 +98,7 @@ public class UserFragment extends BaseFragment {
         clBirth = view.findViewById(R.id.cl_birth);
         clGender = view.findViewById(R.id.cl_gender);
         skvSilenceLoading = view.findViewById(R.id.skv_nav_loading);
-        attachSilenceLoading(getContext(), skvSilenceLoading);
+        attachSilenceLoading(UserFragment.this, skvSilenceLoading);
         view.findViewById(R.id.cl_height).setOnClickListener(mUserInfoOnClickListener);
         view.findViewById(R.id.cl_weight).setOnClickListener(mUserInfoOnClickListener);
         view.findViewById(R.id.cl_gender).setOnClickListener(mUserInfoOnClickListener);
@@ -110,33 +110,19 @@ public class UserFragment extends BaseFragment {
         Log.d(TAG, "initEvent");
         userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
         userViewModel.userData.observe(this, user -> {
-            hideSilenceLoading(getContext());
+            hideSilenceLoading(UserFragment.this);
             clHeight.setClickable(true);
             clWeight.setClickable(true);
             clGender.setClickable(true);
             clBirth.setClickable(true);
-            tvBirth.setText(mBaseApplication.sdfyyyyMMdd_hhmmss.format(new Date(user.getBirth())));
+            tvBirth.setText(mBaseApplication.sdf_yyyy_MM_dd_hh_mm_ss.format(new Date(user.getBirth())));
             tvGender.setText(user.getGender().getName());
             tvHeight.setText(String.format("%.02f", user.getHeight()));
             tvWeight.setText(String.format("%.02f", user.getWeight()));
         });
-        mHandler.postDelayed(() -> {
-            showSilenceLoading(getContext());
-            userViewModel.getUser();
-        }, 3000);
+        showSilenceLoading(UserFragment.this);
+        userViewModel.getUser();
     }
-//
-//    @Override
-//    public void showSilenceLoading() {
-//        skvSilenceLoading.setVisibility(View.VISIBLE);
-//        skvSilenceLoading.setIndeterminate(true);
-//    }
-//
-//    @Override
-//    public void hideSilenceLoading() {
-//        skvSilenceLoading.setVisibility(View.GONE);
-//        skvSilenceLoading.setIndeterminate(false);
-//    }
 
     public enum Singleton implements JySingleton<UserFragment> {
         INSTANCE {

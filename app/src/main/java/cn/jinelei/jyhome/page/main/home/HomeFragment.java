@@ -14,14 +14,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.github.ybq.android.spinkit.SpinKitView;
-
 import java.util.ArrayList;
 
 import cn.jinelei.jyhome.R;
 import cn.jinelei.jyhome.base.JySingleton;
 import cn.jinelei.jyhome.page.base.BaseFragment;
-import cn.jinelei.jyhome.page.base.feature.ISilenceLoading;
 import cn.jinelei.jyhome.page.main.home.test.TestFragment;
 
 public class HomeFragment extends BaseFragment {
@@ -30,7 +27,6 @@ public class HomeFragment extends BaseFragment {
     private TextView tvTitle;
     private ImageView ivNavLeft;
     private ImageView ivNavRight;
-    private SpinKitView skvNavLoading;
     private final ArrayList<Fragment> allFragments = new ArrayList<>();
 
     private ViewPager.OnPageChangeListener onPageChangeListener = new ViewPager.OnPageChangeListener() {
@@ -68,7 +64,7 @@ public class HomeFragment extends BaseFragment {
         tvTitle = navBar.findViewById(R.id.tv_nav_title);
         ivNavLeft = navBar.findViewById(R.id.iv_nav_left);
         ivNavRight = navBar.findViewById(R.id.iv_nav_right);
-        skvNavLoading = navBar.findViewById(R.id.skv_nav_loading);
+        attachSilenceLoading(this, navBar.findViewById(R.id.skv_nav_loading));
         tvTitle.setText(R.string.navigation_home);
     }
 
@@ -93,6 +89,12 @@ public class HomeFragment extends BaseFragment {
             }
         });
         viewPager.setOnPageChangeListener(onPageChangeListener);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        detachSilenceLoading(this);
     }
 
     public enum Singleton implements JySingleton<HomeFragment> {

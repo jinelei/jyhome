@@ -10,8 +10,6 @@ import androidx.fragment.app.Fragment;
 
 import com.github.ybq.android.spinkit.SpinKitView;
 
-import java.util.WeakHashMap;
-
 import cn.jinelei.jyhome.base.BaseApplication;
 import cn.jinelei.jyhome.exception.ActivityNotAttachedException;
 import cn.jinelei.jyhome.page.base.feature.ILoadingDialog;
@@ -19,7 +17,7 @@ import cn.jinelei.jyhome.page.base.feature.ISilenceLoading;
 import cn.jinelei.jyhome.page.base.feature.IToastFeature;
 
 
-public abstract class BaseFragment extends Fragment implements ILoadingDialog, IToastFeature, ISilenceLoading {
+public abstract class BaseFragment extends Fragment implements ILoadingDialog, IToastFeature, ISilenceLoading<BaseFragment> {
     private static final String TAG = "BaseFragment";
 
     public abstract void initView(View view);
@@ -28,7 +26,6 @@ public abstract class BaseFragment extends Fragment implements ILoadingDialog, I
 
     protected Context mContext;
     protected BaseApplication mBaseApplication;
-    protected final WeakHashMap<Context, Object> weakHashMap = new WeakHashMap<>();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -67,28 +64,28 @@ public abstract class BaseFragment extends Fragment implements ILoadingDialog, I
     }
 
     @Override
-    public void attachSilenceLoading(Context context, SpinKitView view) {
-        if (!weakHashMap.containsKey(context)) {
-            weakHashMap.put(context, view);
+    public void attachSilenceLoading(BaseFragment fragment, SpinKitView view) {
+        if (!mBaseApplication.mFragmentSilenceLoadingMap.containsKey(fragment)) {
+            mBaseApplication.mFragmentSilenceLoadingMap.put(fragment, view);
         }
     }
 
     @Override
-    public void detachSilenceLoading(Context context) {
-        if (weakHashMap.containsKey(context)) {
-            weakHashMap.remove(context);
+    public void detachSilenceLoading(BaseFragment fragment) {
+        if (mBaseApplication.mFragmentSilenceLoadingMap.containsKey(fragment)) {
+            mBaseApplication.mFragmentSilenceLoadingMap.remove(fragment);
         }
     }
 
     @Override
-    public boolean isAttachedSilenceLoading(Context context) {
-        return weakHashMap.containsKey(context) && weakHashMap.get(context) != null;
+    public boolean isAttachedSilenceLoading(BaseFragment fragment) {
+        return mBaseApplication.mFragmentSilenceLoadingMap.containsKey(fragment) && mBaseApplication.mFragmentSilenceLoadingMap.get(fragment) != null;
     }
 
     @Override
-    public void showSilenceLoading(Context context) {
-        if (isAttachedSilenceLoading(context)) {
-            Object o = weakHashMap.get(context);
+    public void showSilenceLoading(BaseFragment fragment) {
+        if (isAttachedSilenceLoading(fragment)) {
+            Object o = mBaseApplication.mFragmentSilenceLoadingMap.get(fragment);
             if (o != null && o instanceof SpinKitView) {
                 ((SpinKitView) o).setVisibility(View.VISIBLE);
                 ((SpinKitView) o).setIndeterminate(true);
@@ -97,9 +94,9 @@ public abstract class BaseFragment extends Fragment implements ILoadingDialog, I
     }
 
     @Override
-    public void hideSilenceLoading(Context context) {
-        if (isAttachedSilenceLoading(context)) {
-            Object o = weakHashMap.get(context);
+    public void hideSilenceLoading(BaseFragment fragment) {
+        if (isAttachedSilenceLoading(fragment)) {
+            Object o = mBaseApplication.mFragmentSilenceLoadingMap.get(fragment);
             if (o != null && o instanceof SpinKitView) {
                 ((SpinKitView) o).setVisibility(View.GONE);
                 ((SpinKitView) o).setIndeterminate(false);

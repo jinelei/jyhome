@@ -5,8 +5,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,16 +13,18 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import cn.jinelei.jyhome.R;
 import cn.jinelei.jyhome.base.JySingleton;
 import cn.jinelei.jyhome.page.base.BaseFragment;
+import cn.jinelei.jyhome.page.main.MainActivity;
 import cn.jinelei.jyhome.page.main.home.test.TestFragment;
 
 public class HomeFragment extends BaseFragment {
     private static final String TAG = "HomeFragment";
     private ViewPager viewPager;
-//    private TextView tvTitle;
+    //    private TextView tvTitle;
 //    private ImageView ivNavLeft;
 //    private ImageView ivNavRight;
     private final ArrayList<Fragment> allFragments = new ArrayList<>();

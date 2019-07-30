@@ -9,12 +9,19 @@
     android:orientation="vertical"
     tools:context=".page.main.MainActivity">
 
-    <!--主要显示区域-->
-    <FrameLayout
-        android:id="@+id/frame_main"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swl_main"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1">
+
+        <!--主要显示区域-->
+        <FrameLayout
+            android:id="@+id/frame_main"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <!--导航栏-->
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -23,10 +30,10 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/tab_height"
         android:layout_alignParentBottom="true"
-        app:itemIconTint="@drawable/bottom_navigation_selector"
-        app:itemTextColor="@drawable/bottom_navigation_selector"
         android:layout_gravity="bottom"
         android:layout_marginBottom="4dp"
+        app:itemIconTint="@drawable/bottom_navigation_selector"
+        app:itemTextColor="@drawable/bottom_navigation_selector"
         app:menu="@menu/navigation" />
 
 </LinearLayout>

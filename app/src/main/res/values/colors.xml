@@ -15,4 +15,7 @@
     <!--popup window-->
     <color name="color_popup_window_button_text_color">#FE2F58</color>
     <color name="color_popup_window_separate_color">#333333</color>
+    <!--user fragment-->
+    <color name="color_mine_bg">#cccccc</color>
+    <color name="color_mine_fg">#ffffff</color>
 </resources>

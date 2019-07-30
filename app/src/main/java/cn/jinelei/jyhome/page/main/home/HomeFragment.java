@@ -1,5 +1,7 @@
 package cn.jinelei.jyhome.page.main.home;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -89,6 +91,7 @@ public class HomeFragment extends BaseFragment {
             }
         });
         viewPager.setOnPageChangeListener(onPageChangeListener);
+
     }
 
     @Override

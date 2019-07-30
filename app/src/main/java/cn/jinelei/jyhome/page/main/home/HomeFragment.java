@@ -1,7 +1,5 @@
 package cn.jinelei.jyhome.page.main.home;
 
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,12 +13,10 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 import cn.jinelei.jyhome.R;
 import cn.jinelei.jyhome.base.JySingleton;
 import cn.jinelei.jyhome.page.base.BaseFragment;
-import cn.jinelei.jyhome.page.main.MainActivity;
 import cn.jinelei.jyhome.page.main.home.test.TestFragment;
 
 public class HomeFragment extends BaseFragment {
